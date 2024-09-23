@@ -5,29 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Producto</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
-    <h1>Registro de Producto</h1>
-    <form method="POST">
-        {% csrf_token %}
-        <label for="codigo">Código:</label>
-        <input type="text" id="codigo" name="codigo" required><br>
+    <div class="header">
+        <h1>Gestión de Productos</h1>
+    </div>
+    <div class="container">
+        <div class="card">
+            <h2>Registro de Producto</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <label for="codigo">Código:</label>
+                <input type="text" id="codigo" name="codigo" required>
 
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required><br>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
 
-        <label for="marca">Marca:</label>
-        <input type="text" id="marca" name="marca" required><br>
+                <label for="marca">Marca:</label>
+                <input type="text" id="marca" name="marca" required>
 
-        <label for="fecha_vencimiento">Fecha de Vencimiento:</label>
-        <input type="date" id="fecha_vencimiento" name="fecha_vencimiento" required><br>
+                <label for="fecha_vencimiento">Fecha de Vencimiento:</label>
+                <input type="date" id="fecha_vencimiento" name="fecha_vencimiento" required>
 
-        <button type="submit">Registrar Producto</button>
-    </form>
+                <button type="submit">Registrar Producto</button>
+            </form>
 
-    {% if success %}
-        <p>{{ success }}</p>
-    {% endif %}
+            {% if success %}
+                <p class="success-message">{{ success }}</p>
+            {% endif %}
+        </div>
 </body>
 </html>

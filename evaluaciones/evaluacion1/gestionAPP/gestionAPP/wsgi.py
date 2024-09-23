@@ -1,5 +1,5 @@
 """
-WSGI config for gestionAPP project.
+WSGI config for AppGestion project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,7 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'gestionAPP.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'AppGestion.settings')
 
 application = get_wsgi_application()
+

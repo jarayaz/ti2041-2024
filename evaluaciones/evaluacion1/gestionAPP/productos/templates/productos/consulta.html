@@ -4,33 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta de Productos</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
-    <h1>Productos Registrados</h1>
-    {% if productos %}
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Código</th>
-                    <th>Nombre</th>
-                    <th>Marca</th>
-                    <th>Fecha de Vencimiento</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for producto in productos %}
-                    <tr>
-                        <td>{{ producto.codigo }}</td>
-                        <td>{{ producto.nombre }}</td>
-                        <td>{{ producto.marca }}</td>
-                        <td>{{ producto.fecha_vencimiento }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p>No hay productos registrados.</p>
-    {% endif %}
-    <a href="{% url 'registro_producto' %}">Registrar nuevo producto</a>
+    <div class="header">
+        <h1>Gestión de Productos</h1>
+    </div>
+    <div class="container">
+        <div class="card">
+            <h2>Productos Registrados</h2>
+            {% if productos %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Nombre</th>
+                            <th>Marca</th>
+                            <th>Fecha de Vencimiento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for producto in productos %}
+                            <tr>
+                                <td>{{ producto.codigo }}</td>
+                                <td>{{ producto.nombre }}</td>
+                                <td>{{ producto.marca }}</td>
+                                <td>{{ producto.fecha_vencimiento }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No hay productos registrados.</p>
+            {% endif %}
+            <a href="{% url 'registro_producto' %}">Registrar nuevo producto</a>
+        </div>
+    </div>
 </body>
 </html>
