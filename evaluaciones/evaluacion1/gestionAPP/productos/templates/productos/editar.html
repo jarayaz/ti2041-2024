@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Producto</title>
+    <title>Editar Producto</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
@@ -13,7 +13,7 @@
     </div>
     <div class="container">
         <div class="card">
-            <h2>Registro de Producto</h2>
+            <h2>Editar Producto</h2>
             <form method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
@@ -26,8 +26,9 @@
                     </div>
                 {% endfor %}
 
-                <button type="submit">Registrar Producto</button>
+                <button type="submit">Guardar Cambios</button>
             </form>
+            <a href="{% url 'consulta_productos' %}" class="btn btn-secondary">Cancelar</a>
         </div>
     </div>
 </body>

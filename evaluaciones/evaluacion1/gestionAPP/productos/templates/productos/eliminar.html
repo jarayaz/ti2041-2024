@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Producto</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="header">
+        <h1>Gestión de Productos</h1>
+    </div>
+    <div class="container">
+        <div class="card">
+            <h2>Eliminar Producto</h2>
+            <p>¿Está seguro de que desea eliminar el producto "{{ producto.nombre }}"?</p>
+            <form method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-delete">Confirmar Eliminación</button>
+            </form>
+            <a href="{% url 'consulta_productos' %}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </div>
+</body>
+</html>
