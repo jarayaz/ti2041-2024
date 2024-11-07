@@ -85,6 +85,8 @@ python manage.py runserver
 2. Acceder a la aplicación:
 - Abrir navegador web y visitar: `http://127.0.0.1:8000`
 - Para acceder al panel de administración: `http://127.0.0.1:8000/admin`
+- Credenciales admin password: inacap2024 este perfil puede hacer todo
+- Credenciales usuario1 password:yosoyel123 este perfil solo puede ver la pantalla consultas.
 
 ## Estructura del Proyecto
 
