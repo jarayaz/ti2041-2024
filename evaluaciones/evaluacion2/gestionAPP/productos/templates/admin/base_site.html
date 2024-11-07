@@ -1,0 +1,17 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{{ title }} | Administración de GestiónAPP{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">Administración de GestiónAPP</a>
+</h1>
+{% endblock %}
+
+{% block nav-global %}
+<div class="nav-global" style="float: right; padding: 10px;">
+    <a href="{% url 'registro_producto' %}" class="nav-link" style="color: white; text-decoration: none; margin-right: 20px;">Registrar Productos</a>
+    <a href="{% url 'consulta_productos' %}" class="nav-link" style="color: white; text-decoration: none;">Ver Productos</a>
+</div>
+{% endblock %}

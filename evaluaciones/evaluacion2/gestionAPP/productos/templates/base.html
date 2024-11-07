@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}GestiónAPP{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>GestiónAPP</h1>
+            </div>
+            <div class="user-info">
+                {% if user.is_authenticated %}
+                    <span>Hola, {{ user.username }} 
+                    {% if user.groups.all.0.name == 'ADMIN_PRODUCTS' %}
+                        (Admin)
+                    {% elif user.groups.all.0.name == 'OPERARIOS' %}
+                        (Operario)
+                    {% endif %}
+                    </span>
+                    {% if user.groups.all.0.name == 'ADMIN_PRODUCTS' %}
+                        <a href="{% url 'admin:index' %}" class="nav-link">Administración</a>
+                    {% endif %}
+                    {% if user.groups.all.0.name == 'ADMIN_PRODUCTS' or user.groups.all.0.name == 'OPERARIOS' %}
+                        <a href="{% url 'registro_producto' %}" class="nav-link">Registrar Producto</a>
+                    {% endif %}
+                    <a href="{% url 'consulta_productos' %}" class="nav-link">Ver Productos</a>
+                    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="nav-link btn btn-secondary">Desconectarse</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}" class="nav-link">Iniciar Sesión</a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+    
+    <main class="content">
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>© 2024 GestiónAPP</p>
+    </footer>
+</body>
+</html>
