@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Gestión de Productos{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'productos/css/styles.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>Gestión de Productos</h1>
+            </div>
+            {% if user.is_authenticated %}
+            <div class="user-info">
+                <span>{{ user.username }}</span>
+                {% if user.is_staff %}
+                <a href="{% url 'admin:index' %}" class="nav-link">Administración</a>
+                {% endif %}
+                <form method="post" action="{% url 'productos:logout' %}" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-link" style="background: none; border: none; cursor: pointer;">
+                        Desconectarse
+                    </button>
+                </form>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="container">
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="message {{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

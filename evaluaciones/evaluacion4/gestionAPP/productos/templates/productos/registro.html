@@ -1,0 +1,49 @@
+{% extends "productos/base.html" %}
+
+{% block title %}Registro de Producto{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <div class="card">
+        <h2>{{ titulo }}</h2>
+        <form method="post">
+            {% csrf_token %}
+            
+            {% for field in form %}
+            <div class="form-group {% if field.errors %}has-error{% endif %}">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.errors %}
+                <span class="error-message">{{ field.errors.0 }}</span>
+                {% endif %}
+            </div>
+            {% endfor %}
+
+            <div class="caracteristicas-section">
+                <h3>Características</h3>
+                {{ formset.management_form }}
+                <div class="caracteristicas-grid">
+                    {% for caracteristica_form in formset %}
+                    <div class="caracteristica-item">
+                        {% for field in caracteristica_form %}
+                        <div class="form-group {% if field.errors %}has-error{% endif %}">
+                            {{ field.label_tag }}
+                            {{ field }}
+                            {% if field.errors %}
+                            <span class="error-message">{{ field.errors.0 }}</span>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a href="{% url 'productos:consulta_productos' %}" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

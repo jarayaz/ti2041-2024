@@ -1,0 +1,27 @@
+{% extends "productos/base.html" %}
+
+{% block title %}Eliminar Producto{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <div class="card">
+        <h2>Eliminar Producto</h2>
+        <p>¿Está seguro que desea eliminar el producto "{{ producto.nombre }}"?</p>
+        
+        <div class="producto-info">
+            <p><strong>Código:</strong> {{ producto.codigo }}</p>
+            <p><strong>Marca:</strong> {{ producto.marca.nombre }}</p>
+            <p><strong>Categoría:</strong> {{ producto.categoria.nombre|default:"--" }}</p>
+            <p><strong>Precio:</strong> ${{ producto.precio|floatformat:2 }}</p>
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-actions">
+                <button type="submit" class="btn btn-delete">Confirmar Eliminación</button>
+                <a href="{% url 'productos:consulta_productos' %}" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

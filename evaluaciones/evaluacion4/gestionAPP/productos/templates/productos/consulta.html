@@ -1,0 +1,83 @@
+{% extends "productos/base.html" %}
+
+{% block title %}Consulta de Productos{% endblock %}
+
+{% block content %}
+<div class="header-actions">
+    <h2>Productos Registrados</h2>
+    {% if perms.productos.add_producto %}
+        <a href="{% url 'productos:registro_producto' %}" class="btn btn-primary">Nuevo Producto</a>
+    {% endif %}
+</div>
+
+<div class="card">
+    <h3>Filtros</h3>
+    <form method="GET" class="form-grid">
+        <div class="form-group">
+            <label for="marca">Marca:</label>
+            <select name="marca" id="marca">
+                <option value="">Todas las marcas</option>
+                {% for marca in marcas %}
+                    <option value="{{ marca.id }}" {% if request.GET.marca|add:"0" == marca.id %}selected{% endif %}>
+                        {{ marca.nombre }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="categoria">Categoría:</label>
+            <select name="categoria" id="categoria">
+                <option value="">Todas las categorías</option>
+                {% for categoria in categorias %}
+                    <option value="{{ categoria.id }}" {% if request.GET.categoria|add:"0" == categoria.id %}selected{% endif %}>
+                        {{ categoria.nombre }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+        </div>
+    </form>
+</div>
+
+<div class="card">
+    {% if productos %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Marca</th>
+                    <th>Categoría</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                    <tr>
+                        <td>{{ producto.codigo }}</td>
+                        <td>{{ producto.nombre }}</td>
+                        <td>{{ producto.marca.nombre }}</td>
+                        <td>{{ producto.categoria.nombre|default:"N/A" }}</td>
+                        <td>${{ producto.precio }}</td>
+                        <td>
+                            {% if perms.productos.change_producto %}
+                                <a href="{% url 'productos:editar_producto' producto.pk %}" class="btn btn-edit">Editar</a>
+                            {% endif %}
+                            {% if perms.productos.delete_producto %}
+                                <a href="{% url 'productos:eliminar_producto' producto.pk %}" class="btn btn-delete">Eliminar</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No hay productos registrados.</p>
+    {% endif %}
+</div>
+{% endblock %}
