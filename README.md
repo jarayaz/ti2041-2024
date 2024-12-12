@@ -153,13 +153,16 @@ gestionAPP/
    - Validación de formularios
    - JWT
    - API RESTFul.
-   - Inplementacion de token.
+   - Inplementacion de token en Ninja
 
 4. **Interfaz de Usuario**
    - Diseño responsivo
    - Mensajes de retroalimentación
    - Validación en tiempo real
    - Tablas de consulta ordenadas
+   - Usuario admin pass: inacap2024 (hace todo)
+   - Usuario profe pass: inacap2024 (solo revisa)
+   - usuario operario1 pass inacap2024 (solo revisa)
 
 ## Consideraciones Técnicas
 
