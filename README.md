@@ -51,13 +51,17 @@ exit()
 Ejecución
 Iniciar el servidor de desarrollo:
 python manage.py runserver
-Acceder a la aplicación:
-Abrir navegador web y visitar: http://127.0.0.1:8000
-Para acceder al panel de administración: http://127.0.0.1:8000/admin
-Para acceder a la API: http://127.0.0.1:8000/api/docs
-Credenciales admin password: inacap2024 este perfil puede hacer todo
-Credenciales usuario1 password:yosoyel123 este perfil solo puede ver la pantalla consultas.
-Estructura del Proyecto
+```
+
+2. Acceder a la aplicación:
+- Abrir navegador web y visitar: `http://127.0.0.1:8000`
+- Para acceder al panel de administración: `http://127.0.0.1:8000/admin`
+- Credenciales admin password: inacap2024 este perfil puede hacer todo
+- Credenciales usuario1 password:yosoyel123 este perfil solo puede ver la pantalla consultas.
+
+## Estructura del Proyecto
+
+```
 gestionAPP/
 ├── gestionAPP/          # Configuración principal del proyecto
 │   ├── settings.py      # Configuraciones de Django
@@ -73,59 +77,66 @@ gestionAPP/
 ├── static/              # Archivos estáticos (CSS, JS, etc.)
 ├── manage.py            # Script de gestión de Django
 └── requirements.txt     # Dependencias del proyecto
-Modelos de Datos
-Producto
-código (único)
-nombre
-precio
-marca (FK)
-categoría (FK)
-características (M2M)
-fecha_ingreso
-fecha_modificacion
-Marca
-nombre
-Categoría
-nombre
-Característica
-nombre
-ProductoCaracteristica
-producto (FK)
-característica (FK)
-valor
-Funcionalidades Implementadas
-Gestión de Productos
+```
 
-Registro de nuevos productos
-Consulta de productos existentes
-Edición de productos (solo admin)
-Eliminación de productos (solo admin)
-Características de Productos
+## Modelos de Datos
 
-Asignación múltiple de características
-Valores personalizados por característica
-Seguridad
+### Producto
+- código (único)
+- nombre
+- precio
+- marca (FK)
+- categoría (FK)
+- características (M2M)
+- fecha_ingreso
+- fecha_modificacion
 
-Autenticación de usuarios
-Control de acceso basado en roles
-Protección CSRF
-Validación de formularios
-JWT
-API RESTFul.
-Inplementacion de token en Ninja
-Interfaz de Usuario
+### Marca
+- nombre
 
-Diseño responsivo
-Mensajes de retroalimentación
-Validación en tiempo real
-Tablas de consulta ordenadas
-Usuario admin pass: inacap2024 (hace todo)
-Usuario profe pass: inacap2024 (solo revisa)
-usuario operario1 pass inacap2024 (solo revisa)
-Consideraciones Técnicas
-Base de datos: SQLite (por defecto)
-Framework CSS: Estilos propios
-Zona horaria: America/Santiago
-Idioma: Español
-Autor
-JAIR ARAYA
+### Categoría
+- nombre
+
+### Característica
+- nombre
+
+### ProductoCaracteristica
+- producto (FK)
+- característica (FK)
+- valor
+
+## Funcionalidades Implementadas
+
+1. **Gestión de Productos**
+   - Registro de nuevos productos
+   - Consulta de productos existentes
+   - Edición de productos (solo admin)
+   - Eliminación de productos (solo admin)
+
+2. **Características de Productos**
+   - Asignación múltiple de características
+   - Valores personalizados por característica
+
+3. **Seguridad**
+   - Autenticación de usuarios
+   - Control de acceso basado en roles
+   - Protección CSRF
+   - Validación de formularios
+
+4. **Interfaz de Usuario**
+   - Diseño responsivo
+   - Mensajes de retroalimentación
+   - Validación en tiempo real
+   - Tablas de consulta ordenadas
+
+## Consideraciones Técnicas
+
+- Base de datos: SQLite (por defecto)
+- Framework CSS: Estilos propios
+- Zona horaria: America/Santiago
+- Idioma: Español
+
+## Autor
+
+JAIR ARAYA 
+
