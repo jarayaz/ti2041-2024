@@ -151,6 +151,9 @@ gestionAPP/
    - Control de acceso basado en roles
    - Protección CSRF
    - Validación de formularios
+   - JWT
+   - API RESTFul.
+   - Inplementacion de token.
 
 4. **Interfaz de Usuario**
    - Diseño responsivo
